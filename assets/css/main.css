@@ -1,0 +1,179 @@
+/*
+ * Main Stylesheet for nattapon.io
+ */
+
+:root {
+    --primary-color: #0073aa;
+    --text-color: #333333;
+    --bg-color: #ffffff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.site-header {
+    background: #f1f1f1;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    margin: 0;
+}
+
+.site-title a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.main-navigation a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.main-navigation a:hover {
+    text-decoration: underline;
+}
+
+.site-footer {
+    background: #f1f1f1;
+    padding: 2rem;
+    text-align: center;
+}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.glass-card {
+    background: rgba(53, 212, 114, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(53, 212, 114, 0.1);
+}
+
+.border-l-primary\/40 {
+    border-left-color: rgb(53 212 114 / 0.4);
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* Custom Tailwind Utilities */
+
+.hero-gradient {
+    background: radial-gradient(circle at 50% 50%, rgba(53, 212, 114, 0.15) 0%, transparent 70%);
+}
+
+.bg-primary\/10 {
+    background-color: rgb(53 212 114 / 0.1);
+}
+
+.bg-primary\/20 {
+    background-color: rgb(53 212 114 / 0.2);
+}
+
+.bg-primary\/30 {
+    background-color: rgb(53 212 114 / 0.3);
+}
+
+.bg-primary\/90 {
+    background-color: rgb(53 212 114 / 0.9);
+}
+
+.hover\:bg-primary\/10:hover {
+    background-color: rgb(53 212 114 / 0.1);
+}
+
+.hover\:bg-primary\/90:hover {
+    background-color: rgb(53 212 114/ 0.9);
+}
+
+.border-primary\/10 {
+    border-color: rgb(53 212 114 / 0.1);
+}
+
+.border-primary\/20 {
+    border-color: rgb(53 212 114 / 0.2);
+}
+
+.border-primary\/30 {
+    border-color: rgb(53 212 114 / 0.3);
+}
+
+.hover\:border-primary\/30:hover {
+    border-color: rgb(53 212 114 / 0.3);
+}
+
+.hover\:border-primary\/50:hover {
+    border-color: rgb(53 212 114 / 0.5);
+}
+
+/* Custom Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Kanit", sans-serif;
+    letter-spacing: -0.025em;
+}
