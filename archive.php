@@ -10,12 +10,13 @@ get_header();
 
 <main class="flex-grow pt-32 pb-20 px-6 relative">
     <div class="absolute inset-0 topo-bg opacity-30 pointer-events-none"></div>
-    <div class="absolute inset-0 hero-gradient pointer-events-none"></div>
+    <!-- <div class="absolute inset-0 hero-gradient pointer-events-none"></div> -->
     
     <div class="max-w-6xl mx-auto relative z-10">
         <!-- Header Section -->
         <div class="mb-16">
-            <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none text-slate-900 dark:text-slate-100 mb-6 font-inter">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-none text-slate-900 dark:text-slate-100 mb-6 font-inter">
+                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
                 <?php
 if (is_category()) {
     single_cat_title();
@@ -27,6 +28,7 @@ else {
     the_archive_title();
 }
 ?>
+            </span>
             </h1>
             <p class="max-w-2xl text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium whitespace-pre-line">
                 <?php

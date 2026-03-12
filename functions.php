@@ -118,6 +118,11 @@ require get_template_directory() . '/inc/theme-options.php';
 require get_template_directory() . '/inc/cv-setup.php';
 
 /**
+ * Contact Form Handler
+ */
+require get_template_directory() . '/inc/contact-form-handler.php';
+
+/**
  * Dynamic Page Titles
  * Hooks into WordPress's built-in title-tag support to customise
  * the <title> per page type.
@@ -220,12 +225,18 @@ function nattaponio_output_seo_meta()
     }
     $og_title = esc_attr($og_title);
 
-    // Canonical URL
-    if (is_singular() && !empty($post)) {
+    // Canonical URL — check is_front_page() FIRST, because on a static
+    // front page is_singular() is also true and would give the wrong URL.
+    if (is_front_page()) {
+        $canonical = home_url('/');
+    }
+    elseif (is_singular() && !empty($post)) {
         $canonical = get_permalink($post->ID);
     }
     elseif (is_home()) {
-        $canonical = get_permalink(get_option('page_for_posts'));
+        // Blog posts index page
+        $page_for_posts = get_option('page_for_posts');
+        $canonical = $page_for_posts ? get_permalink($page_for_posts) : home_url('/');
     }
     else {
         $canonical = home_url(add_query_arg(array()));
@@ -249,7 +260,8 @@ function nattaponio_output_seo_meta()
     $robots = esc_attr(nattaponio_get_theme_option('nattaponio_seo_robots', 'index, follow'));
     $twitter_handle = esc_attr(nattaponio_get_theme_option('nattaponio_seo_twitter_handle', ''));
     $twitter_card = esc_attr(nattaponio_get_theme_option('nattaponio_seo_twitter_card', 'summary_large_image'));
-    $og_type = is_singular('post') ? 'article' : 'website';
+    // og:type is 'article' only for single blog posts, never for the front page.
+    $og_type = (is_singular('post') && !is_front_page()) ? 'article' : 'website';
     $cv_name = esc_attr(nattaponio_get_theme_option('nattaponio_cv_name', ''));
 
     // Article dates
@@ -309,3 +321,18 @@ function nattaponio_output_seo_meta()
     echo "<!-- / SEO Meta Tags -->\n\n";
 }
 add_action('wp_head', 'nattaponio_output_seo_meta', 1);
+
+
+add_action('phpmailer_init', 'nattaponio_phpmailer_smtp');
+function nattaponio_phpmailer_smtp($phpmailer)
+{
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'mail.nattapon.io';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Port = 587; // Or 465
+    $phpmailer->Username = 'hello@nattapon.io'; // Use your full email
+    $phpmailer->Password = 'LxQDS2eXsdg7GqKSQhGW';
+    $phpmailer->SMTPSecure = 'tls'; // Use 'ssl' if port is 465
+    $phpmailer->From = 'hello@nattapon.io';
+    $phpmailer->FromName = get_bloginfo('name');
+}

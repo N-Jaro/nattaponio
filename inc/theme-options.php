@@ -205,10 +205,26 @@ function nattaponio_register_theme_options_metabox()
     ));
 
     $cmb_options->add_field(array(
-        'name' => 'CV Download URL',
+        'name' => 'CV Download File',
+        'desc' => 'Upload your CV/resume file (PDF recommended). This will power the Download CV button on the home page.',
         'id' => 'nattaponio_profile_cv_url',
-        'type' => 'text_url',
-        'default' => '#',
+        'type' => 'file',
+        'options' => array(
+            'url' => false, // Hide the URL text input, show only the upload button
+        ),
+        'query_args' => array(
+            'type' => 'application/pdf', // Default filter to PDFs in the media picker
+        ),
+    ));
+
+
+
+    $cmb_options->add_field(array(
+        'name' => 'Email Button Address',
+        'desc' => 'Your contact email address. Will be used as a mailto: link on the home page status card.',
+        'id' => 'nattaponio_profile_email',
+        'type' => 'text',
+        'default' => '',
     ));
 
     // --- BLOG PAGE TAB ---
@@ -238,6 +254,64 @@ function nattaponio_register_theme_options_metabox()
         'id' => 'nattaponio_blog_description',
         'type' => 'textarea_small',
         'default' => 'A curated repository of technical deep-dives, workspace aesthetics, and the pursuit of the perfect brew.',
+    ));
+
+    // --- CONTACT PAGE TAB ---
+    $cmb_options->add_field(array(
+        'name' => 'Contact Page Settings',
+        'desc' => 'Content specific to the Contact page.',
+        'type' => 'title',
+        'id'   => 'contact_page_title',
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Badge Label',
+        'id'      => 'nattaponio_contact_badge',
+        'type'    => 'text',
+        'default' => 'COLLABORATION',
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Heading (White Part)',
+        'id'      => 'nattaponio_contact_heading_white',
+        'type'    => 'text',
+        'default' => "Let's build something",
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Heading (Green / Gradient Part)',
+        'id'      => 'nattaponio_contact_heading_green',
+        'type'    => 'text',
+        'default' => 'together.',
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Description',
+        'id'      => 'nattaponio_contact_description',
+        'type'    => 'textarea_small',
+        'default' => "Whether it's research collaboration, technical inquiries, or just a coffee chat about AI and systems, I'm always reachable.",
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Quote Text',
+        'id'      => 'nattaponio_contact_quote',
+        'type'    => 'textarea_small',
+        'default' => '"The best way to predict the future is to invent it."',
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Quote Author',
+        'id'      => 'nattaponio_contact_quote_author',
+        'type'    => 'text',
+        'default' => 'Alan Kay',
+    ));
+
+    $cmb_options->add_field(array(
+        'name'    => 'Form Recipient Email',
+        'desc'    => 'Email address that receives contact form submissions. Defaults to the site admin email if left blank.',
+        'id'      => 'nattaponio_contact_recipient',
+        'type'    => 'text',
+        'default' => '',
     ));
 
     // --- CV PAGE TAB ---

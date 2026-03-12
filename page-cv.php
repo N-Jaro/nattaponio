@@ -48,7 +48,7 @@ if (empty($awards)) {
 <main class="flex-grow pt-32 pb-20 px-6 relative">
     <div class="absolute inset-0 topo-bg opacity-30 pointer-events-none"></div>
     
-    <div class="max-w-4xl mx-auto relative z-10">
+    <div class="max-w-6xl mx-auto relative z-10">
         
         <!-- Header Profile -->
         <div class="flex flex-col md:flex-row items-start gap-8 mb-16 px-4 md:px-0">
@@ -65,7 +65,7 @@ if (!$profile_img) {
                 </div>
             </div>
             <div class="flex-grow">
-                <h1 class="font-inter text-5xl md:text-7xl font-bold text-whitetracking-tight mb-2"><?php echo esc_html($name); ?></h1>
+                <h1 class="font-inter text-4xl md:text-5xl font-bold text-whitetracking-tight mb-2"><?php echo esc_html($name); ?></h1>
                 <h2 class="text-xl font-medium text-primary mb-4"><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400"><?php echo esc_html($job); ?></span></h2>
                 <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400 mb-6 font-medium">
                     <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px]">location_on</span> <?php echo esc_html($location); ?></span>
@@ -82,7 +82,7 @@ $orcid_url = (strpos($orcid, 'http') === 0) ? $orcid : 'https://' . $orcid;
                     <?php
 endif; ?>
                     <?php if ($linkedin): ?>
-                    <a href="<?php echo esc_url($linkedin); ?>" target="_blank" class="bg-primary hover:bg-primary/90 text-[#020617] text-xs font-bold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                    <a href="<?php echo esc_url($linkedin); ?>" target="_blank" class="glass-card hover:bg-[#0f172a] hover:border-primary/50 text-slate-200 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 border border-primary/20">
                         <span class="material-symbols-outlined text-[18px]">work</span> LinkedIn
                     </a>
                     <?php
@@ -90,6 +90,13 @@ endif; ?>
                     <?php if ($github): ?>
                     <a href="<?php echo esc_url($github); ?>" target="_blank" class="glass-card hover:bg-[#0f172a] hover:border-primary/50 text-slate-200 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 border border-primary/20">
                         <span class="material-symbols-outlined text-[18px]">code</span> GitHub
+                    </a>
+                    <?php
+endif; ?>
+                    <?php $cv_url = nattaponio_get_theme_option('nattaponio_profile_cv_url'); ?>
+                    <?php if ($cv_url): ?>
+                    <a href="<?php echo esc_url($cv_url); ?>" class="bg-primary hover:bg-primary/90 text-[#020617] text-xs font-bold px-4 py-2.5 rounded-xl transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+                        <span class="material-symbols-outlined text-[18px]">download</span> Download CV
                     </a>
                     <?php
 endif; ?>
